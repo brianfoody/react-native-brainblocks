@@ -10,11 +10,11 @@
 import RaiPayment from 'react-native-brainblocks';
 
 <RaiPayment
-	amount={1000}
-	currency='rai'
-	destination='xrb_123...'
-	onFailure={this._onFailure}
-	onSuccess={this._onSuccess}
+  amount={1000}
+  currency='rai'
+  destination='xrb_123...'
+  onFailure={this._onFailure}
+  onSuccess={this._onSuccess}
 />
 ```
 
