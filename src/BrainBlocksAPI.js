@@ -1,12 +1,17 @@
 const BrainBlocksAPI = {}
 
+const _convertRaiToXRB = (rai) => {
+  return rai / 1000000
+}
+
 /**
  * 
- * @param {*} paymentDetails 
+ * @param {double} amount 
+ * @param {string} destination 
  */
-BrainBlocksAPI.startPaymentAsync = async (amount, destination) => {
+BrainBlocksAPI.startPaymentAsync = async (amountInRai, destination) => {
   const details = {
-    amount: amount,
+    amount: amountInRai,
     destination: destination,
   }
 
@@ -38,14 +43,57 @@ BrainBlocksAPI.startPaymentAsync = async (amount, destination) => {
 
 /**
  * 
- * @param {*} token 
+ * @param {string} token 
  */
 BrainBlocksAPI.verifyPayment = async (token) => {
+  const options = {
+    method: 'get',
+  }
+
   let response = await fetch(`https://brainblocks.io/api/session/${token}/verify`, options)
   let responseJson = await response.json()
+
+  if (responseJson.status === 'error') {
+    throw new Error(responseJson.message || 'Payment failed.')
+  }
+
   return responseJson
 }
 
+/**
+ * 
+ * @param {double} currency 
+ * @param {string} amount 
+ */
+BrainBlocksAPI.convertToRai = async (amount, currency) => {
+  const options = {
+    method: 'get',
+  }
+
+  if (currency === 'rai') {
+    return {
+      rai: amount,
+      xrb: _convertRaiToXRB(responseJson.rai)
+    }
+  }
+
+  let response = await fetch(`https://brainblocks.io/api/exchange/${currency}/${amount}/rai`, options)
+  let responseJson = await response.json()
+
+  if (responseJson.status === 'error') {
+    throw new Error(responseJson.message || 'Payment failed.')
+  }
+
+  return {
+    rai: responseJson.rai,
+    xrb: _convertRaiToXRB(responseJson.rai),
+  }
+}
+
+/**
+ * 
+ * @param {string} token 
+ */
 BrainBlocksAPI.waitOnTransfer = async (token) => {
   const options = {
     method: 'post',

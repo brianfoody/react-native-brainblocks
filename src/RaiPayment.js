@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {
+  ActivityIndicator,
   Alert,
   Animated,
   Clipboard,
@@ -18,7 +19,7 @@ import BrainBlocksPaymentDetails from './BrainBlocksPaymentDetails'
 
 const windowSize = Dimensions.get('window')
 
-// 1000 Rai = 0.001 XRB
+// 1 Rai = 0.000001 XRB
 class RaiPayment extends Component {
 
   constructor(props) {
@@ -26,6 +27,7 @@ class RaiPayment extends Component {
 
     this.state = {
       bbPaymentDetails: {},
+      computingAmount: true,
       indicatorAnimator: new Animated.Value(0),
       paymentAnimator: new Animated.Value(0),
       paymentInProgress: false,
@@ -52,11 +54,41 @@ class RaiPayment extends Component {
         extrapolate: 'clamp'
       }),
     }
+
+    this._calcXRB()
   }
 
-  _initPayment = async () => {
+  _calcXRB = async () => {
     const {
       amount,
+      autostart,
+      currency,
+    } = this.props
+
+    const cryptoValue = await BrainBlocksAPI.convertToRai(amount, currency)
+
+    this.setState({
+      computingAmount: false,
+      amountInRai: cryptoValue.rai,
+      amountInXRB: cryptoValue.xrb,
+    })
+
+    if (autostart) {
+      this._initPayment(cryptoValue.rai, cryptoValue.xrb)
+    }
+  }
+
+  _tapPaymentInit = () => {
+    const {
+      amountInRai,
+      amountInXRB,
+    } = this.state
+
+    this._initPayment(amountInRai, amountInXRB)
+  }
+
+  _initPayment = async (amountInRai, amountInXRB) => {
+    const {
       destination,
     } = this.props
 
@@ -65,7 +97,7 @@ class RaiPayment extends Component {
     } = this.state
 
     if (paymentInProgress) {
-      Clipboard.setString(this._raiToXRB() + '')
+      Clipboard.setString(amountInXRB + '')
 
       Alert.alert(
         '',
@@ -79,15 +111,10 @@ class RaiPayment extends Component {
       return
     }
 
-
-    this.setState({
-      success: false,
-    })
-
     this._animatePaymentOpen()
 
     try {
-      let bbPaymentDetails = await BrainBlocksAPI.startPaymentAsync(amount, destination)
+      let bbPaymentDetails = await BrainBlocksAPI.startPaymentAsync(amountInRai, destination)
 
       this.setState({
         bbPaymentDetails: bbPaymentDetails,
@@ -106,7 +133,7 @@ class RaiPayment extends Component {
       let verification = await BrainBlocksAPI.waitOnTransfer(token)
       this._onSuccess()
     } catch (err) {
-      this._onFailure(err.message)
+      this._onFailure()
     }
   }
 
@@ -166,18 +193,12 @@ class RaiPayment extends Component {
     }).start()
   }
 
-  _raiToXRB = () => {
-    const {
-      amount,
-    } = this.props
-
-    return ((amount || 0) / 1000000)
-  }
-
   render() {
-
     const {
+      amountInRai,
+      amountInXRB,
       bbPaymentDetails,
+      computingAmount,
       indicatorStyle,
       paymentInProgress,
       paymentStart,
@@ -194,12 +215,27 @@ class RaiPayment extends Component {
 
           <Animated.View style={[styles.brainBlocksView, paymentStyle]}>
             <TouchableOpacity
-              onPress={this._initPayment}
+              onPress={this._tapPaymentInit}
               style={styles.brainBlocksHeader}>
               <View style={styles.paymentTextView}>
-                <Text style={styles.paymentText}>
-                  Pay <Text style={styles.strongText}> {this._raiToXRB()} XRB</Text>
-                </Text>
+                {
+                  computingAmount
+                    ?
+                    <View style={styles.paymentCalcView}>
+
+                      <Text style={styles.paymentCalcText}>
+                        Finding price in XRB
+                      </Text>
+                      <ActivityIndicator
+                        size='small'
+                        color='#6ccef5'
+                      />
+                    </View>
+                    :
+                    <Text style={styles.paymentText}>
+                      Pay <Text style={styles.strongText}> {amountInXRB} XRB</Text>
+                    </Text>
+                }
               </View>
 
               <View style={styles.paymentImageView}>
@@ -234,6 +270,7 @@ RaiPayment.propTypes = {
   destination: PropTypes.string.isRequired,
   onFailure: PropTypes.func.isRequired,
   onSuccess: PropTypes.func.isRequired,
+  autostart: PropTypes.bool,
 }
 
 const styles = StyleSheet.create({
@@ -265,6 +302,16 @@ const styles = StyleSheet.create({
   },
   strongText: {
     fontWeight: 'bold',
+  },
+  paymentCalcView: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',//flex-end',
+    justifyContent: 'center',
+  },
+  paymentCalcText: {
+    fontSize: 12,
+    paddingRight: 5,
   },
   paymentImageView: {
     flex: 1,

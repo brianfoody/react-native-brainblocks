@@ -32,6 +32,7 @@ export default class Demo extends Component {
       <View style={styles.container}>
         <RaiPayment
           amount={this.state.amount}
+          autoplay={true}
           currency={this.state.currency}
           destination={this.state.destination}
           onFailure={this._onFailure}
