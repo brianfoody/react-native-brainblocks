@@ -5,7 +5,7 @@
 
 `$ npm install react-native-brainblocks --save`
 
-https://www.youtube.com/watch?v=Q3X7d6gAQzM
+
 
 ## Usage
 ```javascript
@@ -20,7 +20,10 @@ import RaiPayment from 'react-native-brainblocks';
 />
 ```
 
-## 1 Rai = 0.000001 XRB
+**Note: 1 Rai = 0.000001 XRB**
+
+## Sample
+https://www.youtube.com/watch?v=Q3X7d6gAQzM
 
 ## API
 
