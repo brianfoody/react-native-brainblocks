@@ -18,20 +18,20 @@ import RaiPayment from 'react-native-brainblocks';
 />
 ```
 
-# 1 Rai = 0.000001 XRB
+## 1 Rai = 0.000001 XRB
 
-## Props
+## Getting started
 
 ### Required
 
 Prop | Description | Type | Required | Default
------- | ------ | ------ | ------
-**`amount`** | The amount you would like to charge | Number | **Required**
+------ | ------ | ------ | ------ | ------
+**`amount`** | The amount you would like to charge | Number | **Required** | 
 **`autoplay`** | Should we automatically start a transaction or wait for user to tap first | bool | Optional | false
-**`currency`** | The currency that you would like to charge. This will be converted to XRB automatically based on currennt market rates. | String | **Required**
-**`destination`** | The destination RaiBlocks address. Note that brainblocks works through intermediate accounts so the address that shows up on screen is not the actual destination. | String | **Required**
-**`onFailure`** | Callback for if payment fails or times out within 120 seconds. Contains a string reason for the failure | Function | **Required**
-**`onSuccess`** | Callback for when the payment succeeds. Contains an object with the token you should use to verify on the serverside. | Function | **Required**
+**`currency`** | The currency that you would like to charge. This will be converted to XRB automatically based on currennt market rates. | String | **Required** | 
+**`destination`** | The destination RaiBlocks address. Note that brainblocks works through intermediate accounts so the address that shows up on screen is not the actual destination. | String | **Required** |
+**`onFailure`** | Callback for if payment fails or times out within 120 seconds. Contains a string reason for the failure | Function | **Required** |
+**`onSuccess`** | Callback for when the payment succeeds. Contains an object with the token you should use to verify on the serverside. | Function | **Required** |
 
 
 ## Support 💙
