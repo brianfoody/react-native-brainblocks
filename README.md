@@ -5,8 +5,7 @@
 
 `$ npm install react-native-brainblocks --save`
 
-## Example
-![Example](https://github.com/brianfoody/react-native-brainblocks/blob/master/sample.gif?raw=true)
+
 
 ## Usage
 ```javascript
@@ -21,7 +20,10 @@ import RaiPayment from 'react-native-brainblocks';
 />
 ```
 
-## 1 Rai = 0.000001 XRB
+**Note: 1 Rai = 0.000001 XRB**
+
+## Sample
+https://www.youtube.com/watch?v=Q3X7d6gAQzM
 
 ## API
 
@@ -34,6 +36,8 @@ Prop | Description | Type | Required | Default
 **`onFailure`** | Callback for if payment fails or times out within 120 seconds. Contains a string reason for the failure | Function | **Required** |
 **`onSuccess`** | Callback for when the payment succeeds. Contains an object with the token you should use to verify on the serverside. | Function | **Required** |
 
+## Example
+![Example](https://github.com/brianfoody/react-native-brainblocks/blob/master/sample.gif?raw=true)
 
 ## Support 💙
 React Native Lib Donation Address: xrb_36ooqx5oz3fppjijaabg1jxojn57cuacee31twsk5owewzqgp5bz7ck6rawn
