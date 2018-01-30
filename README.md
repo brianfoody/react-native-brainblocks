@@ -11,6 +11,7 @@
 ```javascript
 import RaiPayment from 'react-native-brainblocks';
 
+// Rai
 <RaiPayment
   amount={1000}
   currency='rai'
@@ -18,6 +19,26 @@ import RaiPayment from 'react-native-brainblocks';
   onFailure={this._onFailure}
   onSuccess={this._onSuccess}
 />
+
+// AUD
+<RaiPayment
+  amount={1.99}
+  currency='aud'
+  destination='xrb_36ooqx5oz3fppjijaabg1jxojn57cuacee31twsk5owewzqgp5bz7ck6rawn'
+  onFailure={this._onFailure}
+  onSuccess={this._onSuccess}
+/>
+
+// USD
+<RaiPayment
+  amount={1.99}
+  currency='usd'
+  destination='xrb_36ooqx5oz3fppjijaabg1jxojn57cuacee31twsk5owewzqgp5bz7ck6rawn'
+  onFailure={this._onFailure}
+  onSuccess={this._onSuccess}
+/>
+
+...
 ```
 
 **Note: 1 Rai = 0.000001 XRB**
