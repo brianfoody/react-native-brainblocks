@@ -5,6 +5,9 @@
 
 `$ npm install react-native-brainblocks --save`
 
+## Example
+![Example](https://github.com/brianfoody/react-native-brainblocks/blob/master/sample.gif?raw=true)
+
 ## Usage
 ```javascript
 import RaiPayment from 'react-native-brainblocks';
