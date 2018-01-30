@@ -23,9 +23,7 @@ import RaiPayment from 'react-native-brainblocks';
 
 ## 1 Rai = 0.000001 XRB
 
-## Getting started
-
-### Required
+## API
 
 Prop | Description | Type | Required | Default
 ------ | ------ | ------ | ------ | ------
