@@ -73,7 +73,7 @@ BrainBlocksAPI.convertToRai = async (amount, currency) => {
   if (currency === 'rai') {
     return {
       rai: amount,
-      xrb: _convertRaiToXRB(responseJson.rai)
+      xrb: _convertRaiToXRB(amount)
     }
   }
 
