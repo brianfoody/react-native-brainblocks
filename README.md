@@ -9,8 +9,6 @@
 ```javascript
 import RaiPayment from 'react-native-brainblocks';
 
-// TODO: What to do with the module?
-```
 <RaiPayment
 	amount={1000}
 	currency='rai'
@@ -19,4 +17,8 @@ import RaiPayment from 'react-native-brainblocks';
 	onSuccess={this._onSuccess}
 />
 ```
+
   
+
+# TODO
+1) Payments in currencies. Only Rai accepted so far
