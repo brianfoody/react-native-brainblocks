@@ -1,0 +1,27 @@
+
+{
+  "name": "react-native-brainblocks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "raiblocks",
+    "brainblocks",
+    "crypto",
+    "payment"
+  ],
+  "author": "",
+  "license": "",
+  "peerDependencies": {
+    "react-native": "^0.41.2",
+    "react": "15.6.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react-native-qrcode": "^0.2.6"
+  }
+}
