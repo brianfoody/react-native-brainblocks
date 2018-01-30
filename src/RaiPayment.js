@@ -79,7 +79,7 @@ class RaiPayment extends Component {
       return
     }
 
-    
+
     this.setState({
       success: false,
     })
@@ -97,9 +97,8 @@ class RaiPayment extends Component {
 
       this._verifyAsync(bbPaymentDetails.token)
     } catch (err) {
-      console.log(err)
-      this._onFailure()
-    } 
+      this._onFailure(err.message)
+    }
   }
 
   _verifyAsync = async (token) => {
@@ -107,11 +106,11 @@ class RaiPayment extends Component {
       let verification = await BrainBlocksAPI.waitOnTransfer(token)
       this._onSuccess()
     } catch (err) {
-      this._onFailure()
+      this._onFailure(err.message)
     }
   }
 
-  _onFailure = () => {
+  _onFailure = (message) => {
     const {
       onFailure,
     } = this.props
@@ -123,7 +122,7 @@ class RaiPayment extends Component {
       success: false,
     })
 
-    onFailure && onFailure()
+    onFailure && onFailure(message)
   }
 
   _onSuccess = () => {
@@ -171,7 +170,7 @@ class RaiPayment extends Component {
     const {
       amount,
     } = this.props
-    
+
     return ((amount || 0) / 1000000)
   }
 

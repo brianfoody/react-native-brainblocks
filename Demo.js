@@ -15,12 +15,16 @@ export default class Demo extends Component {
     currency: 'rai',
   }
 
-  _onSuccess = () => {
-    window.alert('on success')
+  _onSuccess = (details) => {
+    let sampleUrl = 'https://brainblocks.io/api/session/${token}/verify'
+    window.alert(`
+      I should now verify serverside with this token ${details.token}.
+      i.e. ${sampleUrl}
+    `)
   }
 
-  _onFailure = () => {
-    window.alert('on failure')
+  _onFailure = (message) => {
+    window.alert(`Payment failed: ${message}`)
   }
 
   render() {

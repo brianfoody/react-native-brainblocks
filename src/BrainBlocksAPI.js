@@ -26,9 +26,13 @@ BrainBlocksAPI.startPaymentAsync = async (amount, destination) => {
     headers: headers,
     body: formBody
   }
-  
+
   let response = await fetch('https://brainblocks.io/api/session', options)
   let responseJson = await response.json()
+
+  if (responseJson.status === 'error') {
+    throw new Error(responseJson.message || 'Payment failed.')
+  }
   return responseJson
 }
 
@@ -49,7 +53,7 @@ BrainBlocksAPI.waitOnTransfer = async (token) => {
 
   let response = await fetch(`https://brainblocks.io/api/session/${token}/transfer`, options)
   let responseJson = await response.json()
-  
+
   return responseJson
 }
 
