@@ -54,6 +54,10 @@ BrainBlocksAPI.waitOnTransfer = async (token) => {
   let response = await fetch(`https://brainblocks.io/api/session/${token}/transfer`, options)
   let responseJson = await response.json()
 
+  if (responseJson.status === 'error') {
+    throw new Error(responseJson.message || 'Payment failed.')
+  }
+
   return responseJson
 }
 

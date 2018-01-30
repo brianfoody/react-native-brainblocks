@@ -132,7 +132,7 @@ class RaiPayment extends Component {
 
     const {
       bbPaymentDetails,
-    } = this.props
+    } = this.state
 
     this.setState({
       paymentInProgress: false,
