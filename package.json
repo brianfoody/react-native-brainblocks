@@ -1,6 +1,6 @@
 {
   "name": "react-native-brainblocks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React Native integration for BrainBlocks.io",
   "repository": {
     "type": "git",
