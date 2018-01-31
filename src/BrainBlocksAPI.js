@@ -1,15 +1,31 @@
+// @flow
+
 const BrainBlocksAPI = {}
 
-const _convertRaiToXRB = (rai) => {
+const _convertRaiToXRB = (rai: number): number => {
   return rai / 1000000
 }
+
+type SessionSuccessType = {|
+  status: 'success',
+  token: string,
+  account: string,
+|};
+
+type SessionErrorType = {|
+  status: 'error',
+  message: string,
+  uuid: string,
+|};
+
+export type SessionResultsType = SessionSuccessType | SessionErrorType;
 
 /**
  * 
  * @param {double} amount 
  * @param {string} destination 
  */
-BrainBlocksAPI.startPaymentAsync = async (amountInRai, destination) => {
+BrainBlocksAPI.startPaymentAsync = async (amountInRai: number, destination: string): Promise<SessionSuccessType> => {
   const details = {
     amount: amountInRai,
     destination: destination,
@@ -33,7 +49,7 @@ BrainBlocksAPI.startPaymentAsync = async (amountInRai, destination) => {
   }
 
   let response = await fetch('https://brainblocks.io/api/session', options)
-  let responseJson = await response.json()
+  let responseJson: SessionResultsType = await response.json()
 
   if (responseJson.status === 'error') {
     throw new Error(responseJson.message || 'Payment failed.')
@@ -41,11 +57,13 @@ BrainBlocksAPI.startPaymentAsync = async (amountInRai, destination) => {
   return responseJson
 }
 
+type VerifyPaymentSuccessType = any;
+
 /**
  * 
  * @param {string} token 
  */
-BrainBlocksAPI.verifyPayment = async (token) => {
+BrainBlocksAPI.verifyPayment = async (token: string): Promise<VerifyPaymentSuccessType> => {
   const options = {
     method: 'get',
   }
@@ -60,12 +78,18 @@ BrainBlocksAPI.verifyPayment = async (token) => {
   return responseJson
 }
 
+type ExchangeSuccessType = {|
+  status?: 'success',
+  rai: number,
+  xrb: number,
+|}
+
 /**
  * 
  * @param {double} currency 
  * @param {string} amount 
  */
-BrainBlocksAPI.convertToRai = async (amount, currency) => {
+BrainBlocksAPI.convertToRai = async (amount: number, currency: string): Promise<ExchangeSuccessType> => {
   const options = {
     method: 'get',
   }
@@ -90,11 +114,13 @@ BrainBlocksAPI.convertToRai = async (amount, currency) => {
   }
 }
 
+type TransferSuccessType = any;
+
 /**
  * 
  * @param {string} token 
  */
-BrainBlocksAPI.waitOnTransfer = async (token) => {
+BrainBlocksAPI.waitOnTransfer = async (token: string): Promise<TransferSuccessType> => {
   const options = {
     method: 'post',
   }
