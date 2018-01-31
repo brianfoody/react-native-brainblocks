@@ -5,7 +5,7 @@
 
 `$ npm install react-native-brainblocks --save`
 
-
+If you don't have an RaiBlocks address, head over to https://raiwallet.com/ to create one. This will give you an 'xrb_...' desination account to use below. To test you can create two to send between.
 
 ## Usage
 ```javascript
