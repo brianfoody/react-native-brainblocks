@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
   Alert,
@@ -12,13 +14,25 @@ import {
   View,
 } from 'react-native';
 
-import PropTypes from 'prop-types';
-
 import QRCode from 'react-native-qrcode';
+
+import successImage from '../img/success.png';
 
 const windowSize = Dimensions.get('window');
 
-class BrainBlocksPaymentDetails extends Component {
+type PropsType = {
+  bbDestination: string,
+  paymentInProgress: boolean,
+  success: boolean,
+  indicatorStyle: any,
+  paymentStart: Date,
+};
+
+type StateType = {
+  timeNow: Date,
+};
+
+class BrainBlocksPaymentDetails extends Component<PropsType, StateType> {
   state = {
     timeNow: new Date(),
   };
@@ -41,7 +55,7 @@ class BrainBlocksPaymentDetails extends Component {
     });
   };
 
-  _timeLeft = () => {
+  _timeLeft = (): number => {
     const { paymentStart } = this.props;
 
     const { timeNow } = this.state;
@@ -63,10 +77,7 @@ class BrainBlocksPaymentDetails extends Component {
     if (success) {
       return (
         <View style={styles.centeredPaymentDetailsView}>
-          <Image
-            source={require('../img/success.png')}
-            style={styles.successImage}
-          />
+          <Image source={successImage} style={styles.successImage} />
           <Text>Payment successful!</Text>
         </View>
       );
@@ -106,13 +117,6 @@ class BrainBlocksPaymentDetails extends Component {
     }
   }
 }
-
-BrainBlocksPaymentDetails.propTypes = {
-  bbDestination: PropTypes.string,
-  paymentInProgress: PropTypes.bool,
-  success: PropTypes.bool,
-  indicatorStyle: PropTypes.any,
-};
 
 const styles = StyleSheet.create({
   centeredPaymentDetailsView: {
