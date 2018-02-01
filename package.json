@@ -6,6 +6,13 @@
     "type": "git",
     "url": "git+https://github.com/brianfoody/react-native-brainblocks.git"
   },
+  "files": [
+    "package.json",
+    "yarn.lock",
+    "src",
+    "index.js",
+    "img"
+  ],
   "bugs": {
     "url": "https://github.com/brianfoody/react-native-brainblocks/issues"
   },
