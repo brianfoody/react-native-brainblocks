@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 
 // 1000 Rai = 0.001 XRB
-import RaiPayment from './src/RaiPayment'
+import NanoPayment from './src/NanoPayment'
 
 export default class Demo extends Component {
 
@@ -30,7 +30,7 @@ export default class Demo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <RaiPayment
+        <NanoPayment
           amount={this.state.amount}
           autoplay={true}
           currency={this.state.currency}

@@ -1,3 +1,3 @@
-import RaiPayment from './src/RaiPayment'
+import NanoPayment from './src/NanoPayment'
 
-export default RaiPayment;
+export default NanoPayment;

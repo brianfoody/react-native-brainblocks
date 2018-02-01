@@ -9,10 +9,10 @@
 
 ## Usage
 ```javascript
-import RaiPayment from 'react-native-brainblocks';
+import NanoPayment from 'react-native-brainblocks';
 
 // Rai
-<RaiPayment
+<NanoPayment
   amount={1000}
   currency='rai'
   destination='xrb_36ooqx5oz3fppjijaabg1jxojn57cuacee31twsk5owewzqgp5bz7ck6rawn'
@@ -21,7 +21,7 @@ import RaiPayment from 'react-native-brainblocks';
 />
 
 // AUD
-<RaiPayment
+<NanoPayment
   amount={1.99}
   currency='aud'
   destination='xrb_36ooqx5oz3fppjijaabg1jxojn57cuacee31twsk5owewzqgp5bz7ck6rawn'
@@ -30,7 +30,7 @@ import RaiPayment from 'react-native-brainblocks';
 />
 
 // USD
-<RaiPayment
+<NanoPayment
   amount={1.99}
   currency='usd'
   destination='xrb_36ooqx5oz3fppjijaabg1jxojn57cuacee31twsk5owewzqgp5bz7ck6rawn'

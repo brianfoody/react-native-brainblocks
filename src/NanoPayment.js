@@ -20,7 +20,7 @@ import BrainBlocksPaymentDetails from './BrainBlocksPaymentDetails'
 const windowSize = Dimensions.get('window')
 
 // 1 Rai = 0.000001 XRB
-class RaiPayment extends Component {
+class NanoPayment extends Component {
 
   constructor(props) {
     super(props)
@@ -240,7 +240,7 @@ class RaiPayment extends Component {
 
               <View style={styles.paymentImageView}>
                 <Image
-                  source={require('../img/raiBlocks.png')}
+                  source={require('../img/logo.png')}
                   style={styles.paymentImage}
                 />
               </View>
@@ -264,7 +264,7 @@ class RaiPayment extends Component {
 }
 
 
-RaiPayment.propTypes = {
+NanoPayment.propTypes = {
   amount: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
@@ -326,4 +326,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default RaiPayment
+export default NanoPayment
