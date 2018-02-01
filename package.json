@@ -30,14 +30,16 @@
     "payment"
   ],
   "peerDependencies": {
-    "react": "15.6.0",
-    "react-native": "^0.41.2"
+    "react": ">=15.4.0",
+    "react-native": ">=0.41.2"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
     "react-native-qrcode": "^0.2.6"
   },
   "devDependencies": {
+    "react": "^15.4.0",
+    "react-native": "^0.41.2",
     "flow-bin": "0.61.0",
     "jest": "^22.1.4"
   }
