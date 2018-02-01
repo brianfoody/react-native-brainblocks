@@ -5,7 +5,7 @@
 
 `$ npm install react-native-brainblocks --save`
 
-
+If you don't have an Nano address, head over to https://nanowallet.io/ to create one. This will give you an 'xrb_...' desination account to use below. To test you can create two to send between.
 
 ## Usage
 ```javascript
@@ -52,10 +52,10 @@ Prop | Description | Type | Required | Default
 ------ | ------ | ------ | ------ | ------
 **`amount`** | The amount you would like to charge | Number | **Required** | 
 **`currency`** | The currency that you would like to charge. This will be converted to XRB automatically based on current market rates. | String | **Required** | 
-**`destination`** | The destination RaiBlocks address. Note that brainblocks works through intermediate accounts so the address that shows up on screen is not the actual destination. | String | **Required** |
+**`destination`** | The destination Nano address. Note that brainblocks works through intermediate accounts so the address that shows up on screen is not the actual destination. | String | **Required** |
 **`onFailure`** | Callback for if payment fails or times out within 120 seconds. Contains a string reason for the failure | Function | **Required** |
 **`onSuccess`** | Callback for when the payment succeeds. Contains an object with the token you should use to verify on the serverside. | Function | **Required** |
-**`autoplay`** | Should we automatically start a transaction or wait for user to tap first | bool | Optional | false
+**`autostart`** | Should we automatically start a transaction or wait for user to tap first | bool | Optional | false
 
 ## Example
 ![Example](https://github.com/brianfoody/react-native-brainblocks/blob/master/sample.gif?raw=true)
