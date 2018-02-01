@@ -2,9 +2,17 @@
   "name": "react-native-brainblocks",
   "version": "1.0.4",
   "description": "A React Native integration for BrainBlocks.io",
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/brianfoody/react-native-brainblocks/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brianfoody/react-native-brainblocks.git"
+  },
+  "scripts": {
+    "test": "jest"
   },
   "files": [
     "package.json",
@@ -13,13 +21,7 @@
     "index.js",
     "img"
   ],
-  "bugs": {
-    "url": "https://github.com/brianfoody/react-native-brainblocks/issues"
-  },
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "react-native",
     "raiblocks",
@@ -27,8 +29,6 @@
     "crypto",
     "payment"
   ],
-  "author": "",
-  "license": "",
   "peerDependencies": {
     "react": "15.6.0",
     "react-native": "^0.41.2"
