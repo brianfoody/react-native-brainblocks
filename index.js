@@ -1,3 +1,3 @@
-import NanoPayment from './src/NanoPayment'
+import NanoPayment from './src/NanoPayment';
 
 export default NanoPayment;

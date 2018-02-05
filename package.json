@@ -2,17 +2,26 @@
   "name": "react-native-brainblocks",
   "version": "1.0.4",
   "description": "A React Native integration for BrainBlocks.io",
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/brianfoody/react-native-brainblocks/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brianfoody/react-native-brainblocks.git"
   },
-  "bugs": {
-    "url": "https://github.com/brianfoody/react-native-brainblocks/issues"
-  },
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
+  "files": [
+    "package.json",
+    "yarn.lock",
+    "src",
+    "index.js",
+    "img"
+  ],
+  "main": "index.js",
   "keywords": [
     "react-native",
     "raiblocks",
@@ -20,17 +29,18 @@
     "crypto",
     "payment"
   ],
-  "author": "",
-  "license": "",
   "peerDependencies": {
-    "react": "15.6.0",
-    "react-native": "^0.41.2"
+    "react": ">=15.4.0",
+    "react-native": ">=0.41.2"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
     "react-native-qrcode": "^0.2.6"
   },
   "devDependencies": {
-    "flow-bin": "0.61.0"
+    "react": "^15.4.0",
+    "react-native": "^0.41.2",
+    "flow-bin": "0.61.0",
+    "jest": "^22.1.4"
   }
 }
